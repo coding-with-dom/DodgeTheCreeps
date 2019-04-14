@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Mob.tscn" type="PackedScene" id=2]
@@ -11,6 +11,22 @@
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 0.0110989, -0.0161014, 0, 0, 0, 0, 480.026, 0.909054, 0, 0, 0, 0, 480.142, 720.799, 0, 0, 0, 0, -0.886536, 722.654, 0, 0, 0, 0, 0.0110989, -0.0161014 )
 }
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends AudioStreamPlayer
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -51,6 +67,7 @@ stream = ExtResource( 5 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+script = SubResource( 2 )
 
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
