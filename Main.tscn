@@ -24,13 +24,15 @@ color = Color( 0.113725, 0.392157, 0.156863, 1 )
 [node name="Player" parent="." instance=ExtResource( 3 )]
 
 [node name="MobTimer" type="Timer" parent="."]
-wait_time = 0.5
 
 [node name="ScoreTimer" type="Timer" parent="."]
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="LevelTimer" type="Timer" parent="."]
+wait_time = 5.0
 
 [node name="StartPosition" type="Position2D" parent="."]
 position = Vector2( 240, 450 )
@@ -40,7 +42,7 @@ curve = SubResource( 1 )
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
 position = Vector2( 0.0110989, -0.0161014 )
-rotation = 0.00192735
+rotation = 0.00192734
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 
@@ -54,4 +56,5 @@ stream = ExtResource( 6 )
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="timeout" from="LevelTimer" to="." method="_on_LevelTimer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
